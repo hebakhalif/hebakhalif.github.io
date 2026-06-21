@@ -7,7 +7,7 @@ const ContactBanner = () => {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 px-4" ref={containerRef}>
+    <section className="py-16 px-4 scroll-mt-24" ref={containerRef} id="contact">
       <div className="max-w-4xl mx-auto">
         <motion.div 
           className="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"

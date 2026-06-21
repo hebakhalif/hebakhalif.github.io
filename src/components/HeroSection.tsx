@@ -1,5 +1,5 @@
-import { Phone, Mail, Github, Linkedin, Heart, Sparkles, Code, Star, Smartphone, Rocket } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Mail, Github, Linkedin, Sparkles, Code, Star, Rocket } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 import profileImage from '@/assets/heba-profile.jpg';
 
 const FloatingIcon = ({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
@@ -26,7 +26,7 @@ const FloatingIcon = ({ children, className, delay = 0 }: { children: React.Reac
 );
 
 const HeroSection = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -34,7 +34,7 @@ const HeroSection = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
@@ -139,7 +139,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
+            <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto">
               {/* Decorative Rings */}
               <motion.div
                 className="absolute inset-[-20px] border-2 border-dashed border-primary/30 rounded-full"

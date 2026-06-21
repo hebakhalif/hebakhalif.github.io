@@ -1,39 +1,69 @@
-import { ExternalLink, ChevronLeft, ChevronRight, Sparkles, Lock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+
+// Import Logos
 import lavenderLogo from '@/assets/lavender.png';
 import ahwaManagerLogo from '@/assets/ahwa_manager.jpg';
 import ofoqAlRahaLogo from '@/assets/ofoq_alraha.png';
 import remindMeLogo from '@/assets/remind_me_app.png';
+import screenshotApp2 from '@/assets/screenshot_app2.png';
+
+// Import Ofoq Al Raha screenshots
+import ofoqApp1 from '@/assets/App (1).png';
+import ofoqOfoq1 from '@/assets/Ofoq (1).png';
+import ofoqOfoq from '@/assets/Ofoq.png';
+
+// Import Lavender screenshots
+import lavender122 from '@/assets/iPhone 13 mini - 122.png';
+import lavender152 from '@/assets/iPhone 13 mini - 152.png';
+import lavender88 from '@/assets/iPhone 13 mini - 88.jpg';
+
+// Import Ahwa Manager screenshots
+import ahwaSplash1 from '@/assets/splash 1.png';
+import ahwaAddOrder1 from '@/assets/AddOrder 1.png';
+import ahwaDashboard1 from '@/assets/dashboard1 1.png';
+
+// Import Remind Me App screenshots
+import remindMeImg1 from '@/assets/WhatsApp Image 2026-06-21 at 5.31.26 PM.jpeg';
+import remindMeImg2 from '@/assets/WhatsApp Image 2026-06-21 at 5.30.50 PM.jpeg';
+import remindMeImg3 from '@/assets/WhatsApp Image 2026-06-21 at 5.30.47 PM.jpeg';
 
 const projects = [
   {
-    name: 'Lavender',
-    subtitle: 'Personal Project',
+    name: 'Lavender App',
+    subtitle: 'HEALTH & WELLNESS / THERAPY',
     description: 'A comprehensive therapy application featuring psychological specialties, session bookings, and a system for users to track and manage their mental health journey.',
     technologies: [
-      'Flutter', 'BLoC/Cubit', 'Go Router', 'Video Player', 
-      'Shared Preferences', 'Hive', 'easy_localization', 
-      'Clean Architecture', 'Real-time Chat', 'Payment'
+      'Flutter', 'BLoC/Cubit', 'Go Router', 'Video Player',
+      'Hive', 'Clean Architecture', 'Real-time Chat'
     ],
-    gradient: 'from-primary via-sage to-amber',
     logo: lavenderLogo,
+    screenshots: [
+      lavender122,
+      lavender152,
+      lavender88
+    ],
     playStore: null,
     appStore: null,
-    github: null,
+    github: 'https://github.com/hebakhalif/Lavender-Therapy-App',
     privateRepo: true,
     notReleased: true,
   },
   {
     name: 'Ahwa Manager',
-    subtitle: 'Personal Project',
-    description: 'A smart management application for coffee shops (Ahwa) to track customer orders, manage inventory, and generate insightful business reports and analytics.',
+    subtitle: 'BUSINESS / ANALYTICS',
+    description: 'A smart management application for coffee shops (Ahwa) to track orders, manage inventory, and generate insightful business reports and analytics.',
     technologies: [
-      'Flutter', 'BLoC/Cubit', 'Go Router', 'Hive', 
-      'easy_localization', 'Clean Architecture'
+      'Flutter', 'BLoC/Cubit', 'Go Router', 'Hive',
+      'Clean Architecture'
     ],
-    gradient: 'from-terracotta via-primary to-amber',
     logo: ahwaManagerLogo,
+    screenshots: [
+      ahwaSplash1,
+      ahwaAddOrder1,
+      ahwaDashboard1
+    ],
     playStore: null,
     appStore: null,
     github: 'https://github.com/hebakhalif/Smart-Ahwa-Manager-App',
@@ -42,30 +72,38 @@ const projects = [
   },
   {
     name: 'Ofoq Al Raha',
-    subtitle: 'Internship Project (Fassla Software)',
-    description: 'A comprehensive travel and hotel booking platform allowing users to explore destinations, book stays, and complete payments via WhatsApp integration.',
+    subtitle: 'COMMERCE / TRAVEL BOOKING',
+    description: 'A comprehensive travel and booking platform allowing users to explore destinations, book stays, and complete payments via WhatsApp integration.',
     technologies: [
-      'Flutter', 'BLoC/Cubit', 'Go Router', 'Hive', 
-      'Shared Preferences', 'easy_localization', 'Clean Architecture'
+      'Flutter', 'BLoC/Cubit', 'Go Router', 'Hive',
+      'Shared Preferences', 'Clean Architecture'
     ],
-    gradient: 'from-sage via-secondary to-primary',
     logo: ofoqAlRahaLogo,
+    screenshots: [
+      ofoqApp1,
+      ofoqOfoq1,
+      ofoqOfoq
+    ],
     playStore: null,
     appStore: null,
-    github: null,
+    github: 'https://github.com/hebakhalif/Ofoq-AlRaha-App',
     privateRepo: true,
     notReleased: true,
   },
   {
     name: 'Remind Me App',
-    subtitle: 'Personal Project',
-    description: 'A smart daily task manager that helps you stay organized, set deadlines, and never forget your important tasks — all in one simple and easy-to-use app.',
+    subtitle: 'UTILITY / PRODUCTIVITY',
+    description: 'A smart daily task manager that helps you stay organized, set deadlines, and never forget your important tasks — all in one simple app.',
     technologies: [
       'Flutter', 'BLoC/Cubit', 'Go Router', 'Hive',
-      'Shared Preferences', 'easy_localization'
+      'Shared Preferences'
     ],
-    gradient: 'from-amber via-primary to-sage',
     logo: remindMeLogo,
+    screenshots: [
+      remindMeImg1,
+      remindMeImg2,
+      remindMeImg3
+    ],
     playStore: null,
     appStore: null,
     github: 'https://github.com/hebakhalif/RemindMeApp',
@@ -74,222 +112,253 @@ const projects = [
   },
 ];
 
-const ProjectsSection = () => {
-  const containerRef = useRef(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+const AppStoreBadge = ({ href }: { href?: string }) => (
+  <a
+    href={href || "#"}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0b1319] hover:bg-[#121f29] border border-white/5 hover:border-white/10 rounded-xl text-white select-none transition-colors shadow-sm"
+    style={{ minHeight: "38px" }}
+  >
+    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,22C14.32,22.05 13.89,21.24 12.37,21.24C10.84,21.24 10.37,22 9.09,22.05C7.81,22.1 6.85,20.78 6,19.5C4.26,17 2.94,12.31 4.73,9.2C5.62,7.66 7.2,6.69 8.92,6.67C10.22,6.65 11.45,7.55 12.25,7.55C13.05,7.55 14.54,6.47 16.13,6.63C16.8,6.66 18.66,6.9 19.8,8.57C19.71,8.62 17.5,9.91 17.52,12.5C17.55,15.61 20.24,16.66 20.27,16.68C20.25,16.73 19.82,18.19 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z" />
+    </svg>
+    <div className="flex flex-col text-left">
+      <span className="text-[6.5px] uppercase font-sans tracking-wide leading-none text-gray-400">Download on the</span>
+      <span className="text-[10px] font-semibold font-sans leading-tight mt-0.5">App Store</span>
+    </div>
+  </a>
+);
 
-  const checkScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
+const AppStoreNotReleasedBadge = () => (
+  <div
+    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0b1319]/25 border border-white/5 rounded-xl text-gray-500 select-none opacity-50 cursor-default"
+    style={{ minHeight: "38px" }}
+  >
+    <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,22C14.32,22.05 13.89,21.24 12.37,21.24C10.84,21.24 10.37,22 9.09,22.05C7.81,22.1 6.85,20.78 6,19.5C4.26,17 2.94,12.31 4.73,9.2C5.62,7.66 7.2,6.69 8.92,6.67C10.22,6.65 11.45,7.55 12.25,7.55C13.05,7.55 14.54,6.47 16.13,6.63C16.8,6.66 18.66,6.9 19.8,8.57C19.71,8.62 17.5,9.91 17.52,12.5C17.55,15.61 20.24,16.66 20.27,16.68C20.25,16.73 19.82,18.19 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z" />
+    </svg>
+    <div className="flex flex-col text-left">
+      <span className="text-[6.5px] uppercase font-sans tracking-wide leading-none text-gray-500">Not Released On</span>
+      <span className="text-[9px] font-semibold font-sans leading-tight mt-0.5 text-gray-500">App Store</span>
+    </div>
+  </div>
+);
+
+const GooglePlayBadge = ({ href }: { href?: string }) => (
+  <a
+    href={href || "#"}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0b1319] hover:bg-[#121f29] border border-white/5 hover:border-white/10 rounded-xl text-white select-none transition-colors shadow-sm"
+    style={{ minHeight: "38px" }}
+  >
+    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3,5.27V18.73L16.55,12L3,5.27M17.87,11.33L19.43,12.11C19.8,12.29 20,12.62 20,13C20,13.38 19.8,13.71 19.43,13.89L17.87,14.67L16.03,12.79L17.87,11.33M3.86,4L14.73,9.44L12.56,11.61L3.86,4M3.86,20L12.56,12.39L14.73,14.56L3.86,20Z" />
+    </svg>
+    <div className="flex flex-col text-left">
+      <span className="text-[6.5px] uppercase font-sans tracking-wide leading-none text-gray-400">GET IT ON</span>
+      <span className="text-[10px] font-semibold font-sans leading-tight mt-0.5">Google Play</span>
+    </div>
+  </a>
+);
+
+const PlayStoreNotReleasedBadge = () => (
+  <div
+    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0b1319]/25 border border-white/5 rounded-xl text-gray-500 select-none opacity-50 cursor-default"
+    style={{ minHeight: "38px" }}
+  >
+    <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3,5.27V18.73L16.55,12L3,5.27M17.87,11.33L19.43,12.11C19.8,12.29 20,12.62 20,13C20,13.38 19.8,13.71 19.43,13.89L17.87,14.67L16.03,12.79L17.87,11.33M3.86,4L14.73,9.44L12.56,11.61L3.86,4M3.86,20L12.56,12.39L14.73,14.56L3.86,20Z" />
+    </svg>
+    <div className="flex flex-col text-left">
+      <span className="text-[6.5px] uppercase font-sans tracking-wide leading-none text-gray-500">Not Released On</span>
+      <span className="text-[9px] font-semibold font-sans leading-tight mt-0.5 text-gray-500">Google Play</span>
+    </div>
+  </div>
+);
+
+const GitHubBadge = ({ href }: { href: string }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0b1319] hover:bg-[#121f29] border border-white/5 hover:border-white/10 rounded-xl text-white select-none transition-colors shadow-sm"
+    style={{ minHeight: "38px" }}
+  >
+    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+    <div className="flex flex-col text-left">
+      <span className="text-[6.5px] uppercase font-sans tracking-wide leading-none text-gray-400">View on</span>
+      <span className="text-[10px] font-semibold font-sans leading-tight mt-0.5">GitHub</span>
+    </div>
+  </a>
+);
+
+const ProjectCard = ({ project, isInView, index }: { project: any; isInView: boolean; index: number }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = project.screenshots || [project.logo];
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 420;
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-      setTimeout(checkScroll, 300);
-    }
+  const handlePrev = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
-    <section className="py-16 px-4 relative overflow-hidden" ref={containerRef}>
-      {/* Background decoration */}
-      <motion.div 
-        className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
-        animate={{ opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-      
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-amber/10"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Portfolio</span>
-          </motion.div>
-          
-          <h2 className="section-title mb-4">
-            Featured{' '}
-            <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of mobile applications I've crafted, each representing my commitment to quality and innovation.
-          </p>
-        </motion.div>
-        
-        {/* Navigation arrows */}
-        <div className="flex justify-end gap-2 mb-6 px-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scroll('left')}
-            className={`p-3 rounded-full glass-card ${canScrollLeft ? 'text-foreground' : 'text-muted-foreground/30'}`}
-            disabled={!canScrollLeft}
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scroll('right')}
-            className={`p-3 rounded-full glass-card ${canScrollRight ? 'text-foreground' : 'text-muted-foreground/30'}`}
-            disabled={!canScrollRight}
-          >
-            <ChevronRight className="w-5 h-5" />
-          </motion.button>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      className="flex flex-col bg-[#0b1319]/40 border border-white/5 rounded-3xl p-5 hover:border-white/10 hover:bg-[#0b1319]/60 transition-all duration-300 shadow-xl group"
+    >
+      {/* 1. Mockup Carousel Container */}
+      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center p-3 mb-5 border border-white/5">
+        {/* Backdrop (Blurred Screenshot) */}
+        <img
+          src={slides[currentSlide]}
+          alt={project.name}
+          className="absolute inset-0 w-full h-full object-cover blur-lg scale-110 opacity-30 pointer-events-none transition-all duration-500"
+        />
+
+        {/* Mobile Phone Mockup */}
+        <div className="relative h-full aspect-[9/18.5] rounded-[20px] overflow-hidden border-[3px] border-[#1e293b] shadow-2xl bg-black flex items-center justify-center">
+          <img
+            src={slides[currentSlide]}
+            alt={`${project.name} slide`}
+            className="w-full h-full object-cover transition-all duration-500"
+          />
         </div>
 
-        <div 
-          ref={scrollRef}
-          onScroll={checkScroll}
-          className="horizontal-scroll px-4"
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              whileHover={{ y: -10 }}
-              className="project-card relative group min-w-[320px] max-w-[340px]"
+        {/* Carousel Navigation Arrows */}
+        {slides.length > 1 && (
+          <>
+            <button
+              onClick={handlePrev}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-xs transition-colors z-20"
+              aria-label="Previous slide"
             >
-              {/* Gradient top border */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} rounded-t-2xl`} />
-              
-              {/* Floating glow on hover */}
-              <motion.div 
-                className={`absolute -inset-1 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl`}
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-xs transition-colors z-20"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
+
+        {/* Carousel Indicators (Dots & Index) */}
+        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between z-20">
+          {/* Dots */}
+          <div className="flex gap-1.5">
+            {slides.map((_, i) => (
+              <span
+                key={i}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-[#d37b64] w-3" : "bg-white/20"
+                  }`}
               />
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <motion.div 
-                    className="w-12 h-12 rounded-xl overflow-hidden"
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <img src={project.logo} alt={project.name} className="w-full h-full object-cover" />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-xl font-display font-bold">{project.name}</h3>
-                    {project.subtitle && (
-                      <span className="text-xs text-muted-foreground">{project.subtitle}</span>
-                    )}
-                  </div>
-                </div>
-                
-                <p className="text-muted-foreground text-sm mb-6 leading-relaxed min-h-[60px]">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.slice(0, 5).map((tech, i) => (
-                    <motion.span
-                      key={tech}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ delay: index * 0.2 + i * 0.05 + 0.3 }}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-secondary/50 text-secondary-foreground"
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                  {project.technologies.length > 5 && (
-                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground">
-                      +{project.technologies.length - 5} more
-                    </span>
-                  )}
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.playStore && (
-                    <motion.a
-                      href={project.playStore}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary text-xs font-medium"
-                      whileHover={{ 
-                        scale: 1.05, 
-                        backgroundColor: "hsl(var(--primary) / 0.2)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      Play Store
-                    </motion.a>
-                  )}
-                  {project.appStore && (
-                    <motion.a
-                      href={project.appStore}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-accent/10 text-accent text-xs font-medium"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "hsl(var(--accent) / 0.2)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      App Store
-                    </motion.a>
-                  )}
-                  {project.github && (
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted text-muted-foreground text-xs font-medium"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "hsl(var(--muted) / 0.8)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      GitHub
-                    </motion.a>
-                  )}
-                  {'privateRepo' in project && project.privateRepo && (
-                    <span className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/30 text-muted-foreground text-xs font-medium cursor-default border border-muted/40">
-                      <Lock className="w-3 h-3" />
-                      Private Repository
-                    </span>
-                  )}
-                  {'notReleased' in project && project.notReleased && (
-                    <span className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 text-muted-foreground text-xs font-medium cursor-default opacity-70">
-                      Not Released Yet
-                    </span>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+            ))}
+          </div>
+          {/* Index count */}
+          <div className="text-[9px] font-medium px-2 py-0.5 rounded-md bg-black/60 text-gray-300 border border-white/5">
+            {currentSlide + 1} / {slides.length}
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Project Header (Logo + Title + Subtitle) */}
+      <div className="flex items-center gap-3.5 mb-3.5">
+        <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 shrink-0 bg-slate-900 flex items-center justify-center">
+          <img src={project.logo} alt={`${project.name} logo`} className="w-full h-full object-cover" />
+        </div>
+        <div className="flex flex-col text-left">
+          <h3 className="text-sm font-display font-bold text-white tracking-tight leading-snug">{project.name}</h3>
+          <span className="text-[9px] font-semibold text-[#d37b64] uppercase tracking-wider mt-0.5">
+            {project.subtitle}
+          </span>
+        </div>
+      </div>
+
+      {/* 3. Description */}
+      <p className="text-muted-foreground text-[11px] leading-relaxed text-left min-h-[50px] mb-4">
+        {project.description}
+      </p>
+
+      {/* 4. Technology Badges */}
+      <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
+        {project.technologies.slice(0, 4).map((tech: string) => (
+          <span
+            key={tech}
+            className="px-2.5 py-0.5 text-[9px] font-medium rounded-md bg-white/5 text-gray-300 border border-white/5"
+          >
+            {tech}
+          </span>
+        ))}
+        {project.technologies.length > 4 && (
+          <span className="px-2 py-0.5 text-[9px] font-medium rounded-md bg-white/5 text-gray-400 border border-white/5">
+            +{project.technologies.length - 4}
+          </span>
+        )}
+      </div>
+
+      {/* 5. Store and GitHub Badges */}
+      <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+        {project.appStore ? <AppStoreBadge href={project.appStore} /> : <AppStoreNotReleasedBadge />}
+        {project.playStore ? <GooglePlayBadge href={project.playStore} /> : <PlayStoreNotReleasedBadge />}
+        {project.github && <GitHubBadge href={project.github} />}
+      </div>
+    </motion.div>
+  );
+};
+
+const ProjectsSection = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section className="py-20 px-4 relative overflow-hidden" ref={containerRef}>
+      {/* Background glow decoration */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto">
+        {/* Title - Centered */}
+        <div className="flex flex-col items-center justify-center mb-12 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3"
+          >
+            <Sparkles className="w-5 h-5 text-[#d37b64] animate-pulse" />
+            <h2 className="text-xl md:text-2xl font-display font-bold text-white tracking-tight">
+              Selected Projects
+            </h2>
+          </motion.div>
+
+
+        </div>
+
+        {/* 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.name}
+              project={project}
+              isInView={isInView}
+              index={index}
+            />
           ))}
         </div>
-        
-        <motion.p 
-          className="text-center text-muted-foreground mt-8 text-sm"
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          ← Swipe or use arrows to explore more projects →
-        </motion.p>
       </div>
     </section>
   );

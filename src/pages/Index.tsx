@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import FloatingParticles from '@/components/FloatingParticles';
 import HeroSection from '@/components/HeroSection';
 import StatsSection from '@/components/StatsSection';
@@ -14,16 +15,27 @@ import ContactBanner from '@/components/ContactBanner';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
+      <Navbar />
       <FloatingParticles />
       
       <main className="relative z-10">
-        <HeroSection />
+        <div id="home" className="scroll-mt-24">
+          <HeroSection />
+        </div>
         <StatsSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <ProjectGallery />
-        <SkillsSection />
-        <EducationSection />
+        <div id="experience" className="scroll-mt-24">
+          <ExperienceSection />
+        </div>
+        <div id="projects" className="scroll-mt-24">
+          <ProjectsSection />
+          <ProjectGallery />
+        </div>
+        <div id="skills" className="scroll-mt-24">
+          <SkillsSection />
+        </div>
+        <div id="education" className="scroll-mt-24">
+          <EducationSection />
+        </div>
         <LanguagesSection />
         <VolunteeringSection />
         <AwardsSection />
