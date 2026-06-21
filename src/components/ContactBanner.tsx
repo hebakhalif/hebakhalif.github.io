@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Send, Heart, Sparkles } from 'lucide-react';
+import { Mail, MapPin, Send, Heart, Sparkles } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -96,7 +96,6 @@ const ContactBanner = () => {
               transition={{ delay: 0.5 }}
             >
               {[
-                { icon: Phone, text: '+20 1153187854' },
                 { icon: Mail, text: 'habatrka@gmail.com' },
                 { icon: MapPin, text: 'Egypt' },
               ].map((item, index) => (

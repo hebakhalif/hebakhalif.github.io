@@ -58,13 +58,13 @@ const Navbar = () => {
 
   const menuVariants: Variants = {
     hidden: { opacity: 0, y: -20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.3, ease: "easeOut" }
     },
-    exit: { 
-      opacity: 0, 
+    exit: {
+      opacity: 0,
       y: -20,
       transition: { duration: 0.2, ease: "easeIn" }
     }
@@ -72,11 +72,10 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? "bg-background/80 backdrop-blur-md border-b border-border/40 py-3 shadow-lg"
           : "bg-transparent py-5"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Left: Logo */}
@@ -90,11 +89,10 @@ const Navbar = () => {
             <a
               key={item.label}
               href={item.href}
-              className={`relative text-xs uppercase font-semibold tracking-widest transition-colors py-2 ${
-                activeSection === item.href.substring(1)
+              className={`relative text-xs uppercase font-semibold tracking-widest transition-colors py-2 ${activeSection === item.href.substring(1)
                   ? "text-[#d37b64]"
                   : "text-muted-foreground hover:text-foreground"
-              }`}
+                }`}
             >
               {item.label}
               {activeSection === item.href.substring(1) && (
@@ -111,8 +109,8 @@ const Navbar = () => {
         {/* Right: CTA Buttons (Desktop) */}
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="/Heba_Khalifa_CV.pdf"
-            download="Heba_Khalifa_CV.pdf"
+            href="/Heba_khalifa_Cv.pdf"
+            download="Heba_khalifa_Cv.pdf"
             className="inline-flex items-center justify-center px-5 py-2 rounded-full border border-foreground/20 hover:border-[#d37b64]/40 hover:text-[#d37b64] text-foreground font-display font-semibold text-xs tracking-wider uppercase transition-all bg-foreground/5 hover:bg-foreground/10"
           >
             DOWNLOAD CV
@@ -153,11 +151,10 @@ const Navbar = () => {
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-sm uppercase font-semibold tracking-wider transition-colors py-2 border-b border-border/20 ${
-                    activeSection === item.href.substring(1)
+                  className={`text-sm uppercase font-semibold tracking-wider transition-colors py-2 border-b border-border/20 ${activeSection === item.href.substring(1)
                       ? "text-[#d37b64] pl-2 border-l-2 border-l-[#d37b64]"
                       : "text-muted-foreground hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </a>
@@ -166,8 +163,8 @@ const Navbar = () => {
 
             <div className="flex flex-col gap-3 pt-2">
               <a
-                href="/Heba_Khalifa_CV.pdf"
-                download="Heba_Khalifa_CV.pdf"
+                href="/Heba_khalifa_Cv.pdf"
+                download="Heba_khalifa_Cv.pdf"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center py-3 rounded-full border border-foreground/20 text-foreground font-display font-semibold text-xs tracking-wider uppercase transition-all bg-foreground/5"
               >
