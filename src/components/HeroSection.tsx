@@ -130,6 +130,28 @@ const HeroSection = () => {
                 </motion.a>
               ))}
             </motion.div>
+
+            {/* Google Play Badge */}
+            <motion.div variants={itemVariants} className="flex justify-center lg:justify-start mt-4">
+              <motion.a
+                href="https://play.google.com/store/apps/details?id=com.maab.islamic_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#3a7d4f] text-white font-bold shadow-lg transition-all"
+                whileHover={{ y: -3, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3,5.27V18.73L16.55,12L3,5.27M17.87,11.33L19.43,12.11C19.8,12.29 20,12.62 20,13C20,13.38 19.8,13.71 19.43,13.89L17.87,14.67L16.03,12.79L17.87,11.33M3.86,4L14.73,9.44L12.56,11.61L3.86,4M3.86,20L12.56,12.39L14.73,14.56L3.86,20Z" />
+                </svg>
+                <span className="text-xs md:text-sm">Google Play</span>
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-orange-400"
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </motion.a>
+            </motion.div>
           </div>
 
           {/* Right Side: Image with Decorative Elements */}

@@ -31,6 +31,27 @@ import remindMeImg3 from '@/assets/WhatsApp Image 2026-06-21 at 5.30.47 PM.jpeg'
 
 const projects = [
   {
+    name: "Ma'ab",
+    subtitle: 'ISLAMIC / SPIRITUALITY',
+    description: "A comprehensive Islamic companion app featuring Dhikr (Athkar), Quran audio recitation, Adhan alerts, and accurate prayer times with location-based scheduling.",
+    technologies: [
+      'Flutter', 'BLoC', 'Adhan', 'Geolocator',
+      'Audio Players', 'Local Notifications', 'Hijri Calendar', 'SQLite'
+    ],
+    logo: '/Splash Screen.png',
+    screenshots: [
+      '/Splash Screen.png',
+      '/Getting Started.png',
+      '/Tasbih Counter.png',
+      '/Calendar.png',
+    ],
+    playStore: 'https://play.google.com/store/apps/details?id=com.maab.islamic_app',
+    appStore: null,
+    github: 'https://github.com/hebakhalif/Islamic-App',
+    privateRepo: false,
+    notReleased: false,
+  },
+  {
     name: 'Lavender App',
     subtitle: 'HEALTH & WELLNESS / THERAPY',
     description: 'A comprehensive therapy application featuring psychological specialties, session bookings, and a system for users to track and manage their mental health journey.',

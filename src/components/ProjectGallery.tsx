@@ -9,8 +9,6 @@ import whatsappImg from '/WhatsApp Image 2026-04-09 at 10.51.37 AM.jpeg';
 import screenshotApp2 from '@/assets/screenshot_app2.png';
 
 const galleryImages = [
-
-
   {
     id: 1,
     title: 'Lavender App',
@@ -23,6 +21,13 @@ const galleryImages = [
     title: 'Remind Me App',
     category: 'Flutter App',
     image: screenshotApp2,
+    size: 'large'
+  },
+  {
+    id: 3,
+    title: "Ma'ab",
+    category: 'Islamic App',
+    image: '/WhatsApp Image 2026-09-02 at 12.25.40 AM.jpeg',
     size: 'large'
   },
 ];

@@ -6,59 +6,59 @@
 
 @layer base {
   :root {
-    --background: 215 25% 8%; /* Deep Slate */
-    --foreground: 210 20% 98%; /* Soft White */
+    --background: 20 20% 7%; /* Warm Dark Mocha */
+    --foreground: 30 20% 98%; /* Warm Soft White */
 
-    --card: 215 25% 10%;
-    --card-foreground: 210 20% 98%;
+    --card: 20 20% 9%;
+    --card-foreground: 30 20% 98%;
 
-    --popover: 215 25% 10%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 20 20% 9%;
+    --popover-foreground: 30 20% 98%;
 
-    --primary: 10 50% 75%; /* Rose Gold */
-    --primary-foreground: 215 25% 8%;
+    --primary: 15 55% 72%; /* Warm Terracotta Rose */
+    --primary-foreground: 20 20% 7%;
 
-    --secondary: 215 15% 25%; /* Muted Slate */
-    --secondary-foreground: 10 50% 95%;
+    --secondary: 20 15% 22%; /* Muted Mocha Slate */
+    --secondary-foreground: 30 20% 95%;
 
-    --muted: 215 15% 15%;
-    --muted-foreground: 215 10% 65%;
+    --muted: 20 15% 14%;
+    --muted-foreground: 25 12% 68%;
 
-    --accent: 210 15% 90%; /* Pearl Accent */
-    --accent-foreground: 215 25% 8%;
+    --accent: 30 25% 90%; /* Pearl Warm Accent */
+    --accent-foreground: 20 20% 7%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 15% 20%;
-    --input: 215 15% 20%;
-    --ring: 10 50% 75%;
+    --border: 20 15% 18%;
+    --input: 20 15% 18%;
+    --ring: 15 55% 72%;
 
     --radius: 1.5rem;
 
     /* Custom portfolio tokens */
-    --sage: 10 50% 75%;
-    --sage-light: 10 50% 30%;
-    --terracotta: 210 15% 90%;
-    --terracotta-light: 210 15% 20%;
-    --cream: 215 25% 12%;
-    --warm-brown: 215 15% 15%;
-    --amber: 10 50% 75%;
-    --amber-glow: 10 60% 85%;
+    --sage: 15 55% 72%;
+    --sage-light: 15 50% 30%;
+    --terracotta: 30 25% 90%;
+    --terracotta-light: 20 15% 20%;
+    --cream: 20 20% 11%;
+    --warm-brown: 20 15% 14%;
+    --amber: 25 65% 70%;
+    --amber-glow: 25 70% 80%;
     
     /* Glassmorphism */
-    --glass-bg: 215 25% 12% / 0.7;
-    --glass-border: 10 50% 50% / 0.2;
-    --glass-shadow: 0 0% 0% / 0.4;
+    --glass-bg: 20 20% 11% / 0.7;
+    --glass-border: 15 40% 45% / 0.2;
+    --glass-shadow: 0 0% 0% / 0.5;
 
-    --sidebar-background: 215 25% 8%;
-    --sidebar-foreground: 210 20% 98%;
-    --sidebar-primary: 10 50% 75%;
-    --sidebar-primary-foreground: 215 25% 8%;
-    --sidebar-accent: 215 15% 15%;
-    --sidebar-accent-foreground: 210 20% 98%;
-    --sidebar-border: 215 15% 20%;
-    --sidebar-ring: 10 50% 75%;
+    --sidebar-background: 20 20% 7%;
+    --sidebar-foreground: 30 20% 98%;
+    --sidebar-primary: 15 55% 72%;
+    --sidebar-primary-foreground: 20 20% 7%;
+    --sidebar-accent: 20 15% 14%;
+    --sidebar-accent-foreground: 30 20% 98%;
+    --sidebar-border: 20 15% 18%;
+    --sidebar-ring: 15 55% 72%;
   }
 
   .dark {

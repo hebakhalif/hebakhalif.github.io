@@ -36,9 +36,9 @@ const Index = () => {
         <div id="education" className="scroll-mt-24">
           <EducationSection />
         </div>
-        <LanguagesSection />
-        <VolunteeringSection />
         <AwardsSection />
+        <VolunteeringSection />
+        <LanguagesSection />
         <ContactBanner />
       </main>
     </div>
